@@ -829,8 +829,8 @@ html:not(.js) details[open] .xp__body { animation: reveal .35s ease; }
   text-align: center;
   white-space: nowrap;
   margin-top: clamp(8px, 2vw, 24px);
-  margin-bottom: -.06em;   /* sedikit memotong bawah huruf */
   padding-top: .1em;       /* ruang saat huruf bergerak naik */
+  padding-bottom: .24em;   /* ekor huruf "y" terlihat utuh */
   user-select: none;
 }
 /* tiap huruf dipecah jadi <span> oleh script.js */
