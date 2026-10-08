@@ -312,6 +312,28 @@
     });
   }
 
+  /* 11. Kata "analyst" di footer: huruf naik lalu bergelombang */
+  const footerWord = $('.footer__word');
+  if (footerWord && !reduce) {
+    const text = footerWord.textContent.trim();
+    footerWord.textContent = '';
+    [...text].forEach((ch, i) => {
+      const span = document.createElement('span');
+      span.className = 'ch';
+      span.style.setProperty('--i', i);
+      span.textContent = ch;
+      footerWord.appendChild(span);
+    });
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) { footerWord.classList.add('is-in'); io.disconnect(); }
+      }, { threshold: 0.2 });
+      io.observe(footerWord);
+    } else {
+      footerWord.classList.add('is-in');
+    }
+  }
+
   /* 10. Kartu hero miring mengikuti kursor ----------------- */
   const card = $('.hero__card');
   if (card && !reduce && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
